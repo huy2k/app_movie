@@ -1,4 +1,4 @@
-package com.example.navigation.movies;
+package com.example.navigation.model;
 
 import java.io.Serializable;
 

@@ -2,7 +2,7 @@ package com.example.navigation.movies;
 
 import android.os.AsyncTask;
 
-import com.example.navigation.model.MovieData;
+import com.example.navigation.model.TrailerData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,25 +12,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 
-public abstract class MovieParser extends AsyncTask<String, Void, ArrayList<MovieData>> {
+public abstract class TrailerParser extends AsyncTask<String,Void,ArrayList<TrailerData>> {
+    public ArrayList<TrailerData> trailersList = new ArrayList<>();
 
-    public ArrayList<MovieData> moviesList = new ArrayList<>();
+
 
     @Override
-    protected ArrayList<MovieData> doInBackground(String... params) {
-
+    protected ArrayList<TrailerData> doInBackground(String... params) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String param_type = params[0];
-        final String BASE_URL = "http://api.themoviedb.org/3/movie/" + param_type +
-                "?api_key=4840c7126f832af90ab18051d9481afb";
+        final String BASE_URL = "http://api.themoviedb.org/3/movie/"+param_type+
+                "/videos"+"?api_key=f0d7c86f6eeb4a09849c830fb0d27a46";
         try {
-
             URL url = new URL(BASE_URL);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.connect();
@@ -51,30 +49,22 @@ public abstract class MovieParser extends AsyncTask<String, Void, ArrayList<Movi
             JSONArray jsonArray = jsonObject.getJSONArray("results");
 
             for (int i = 0; i < jsonArray.length(); i++) {
-
                 JSONObject currentMovie = jsonArray.getJSONObject(i);
-                String id = currentMovie.getString("id");
-                String poster = currentMovie.getString("poster_path");
-                String overview = currentMovie.getString("overview");
-                String release = currentMovie.getString("release_date");
-                String title = currentMovie.getString("title");
-                String rate = currentMovie.getString("vote_average");
-                String backdropPath = currentMovie.getString("backdrop_path");
+                String videoName = currentMovie.getString("name");
+                String videoLink = currentMovie.getString("key");
 
-                MovieData movieData = new MovieData(poster, overview, release, id, title, rate, backdropPath);
-                moviesList.add(movieData);
+                TrailerData trailerData = new TrailerData(videoName,videoLink);
+                trailersList.add(trailerData);
             }
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return moviesList;
+        return trailersList;
     }
 
     @Override
-    protected abstract void onPostExecute(ArrayList<MovieData> movieData);
+    protected abstract void onPostExecute(ArrayList<TrailerData> trailersList);
+
 }
+

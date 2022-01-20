@@ -1,4 +1,4 @@
-package com.example.navigation.movies;
+package com.example.navigation.model;
 
 public class Movie {
     private int id_mv;

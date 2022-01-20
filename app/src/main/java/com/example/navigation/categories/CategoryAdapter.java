@@ -1,8 +1,6 @@
 package com.example.navigation.categories;
 
-import com.example.navigation.HomeFra;
 import com.example.navigation.R;
-import com.example.navigation.movies.Movie;
 import com.example.navigation.movies.MovieAdapter;
 
 import android.content.Context;

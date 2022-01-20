@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Notification"-->
+<!--        android:textSize="30sp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:textColor="@color/white"/>-->
+    <LinearLayout
+        android:id="@+id/ln_search"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:id="@+id/txt_search"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:text="hi_hi"
+            android:textSize="30px"></EditText>
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Search"></Button>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notification"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="@color/white"/>
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lv"/>
+        android:layout_below="@+id/ln_search"
+        android:layout_marginTop="30dp"></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

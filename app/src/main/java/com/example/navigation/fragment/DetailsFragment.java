@@ -1,32 +1,24 @@
 package com.example.navigation.fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.navigation.Adapter.TrailerAdapter;
 import com.example.navigation.R;
-import com.example.navigation.movies.MovieData;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.example.navigation.model.MovieData;
+import com.example.navigation.model.TrailerData;
+import com.example.navigation.movies.TrailerParser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -48,7 +40,7 @@ public class DetailsFragment extends Fragment {
     public RecyclerView videosView;
     public RecyclerView reviewsView;
     public RecyclerView commentsView;
-//    private TrailerAdapter videosAdapter;
+    private TrailerAdapter videosAdapter;
 //    private ReviewAdapter reviewAdapter;
     private ImageButton favorite;
     private ImageButton delete;
@@ -147,14 +139,14 @@ public class DetailsFragment extends Fragment {
 //            }
 //        });
 //
-//        TrailerParser trailerParser = new TrailerParser() {
-//            @Override
-//            protected void onPostExecute(ArrayList<TrailerData> trailersList) {
-//                videosAdapter = new TrailerAdapter(trailersList, getActivity());
-//                videosView.setAdapter(videosAdapter);
-//            }
-//        };
-//        trailerParser.execute(model.getId());
+        TrailerParser trailerParser = new TrailerParser() {
+            @Override
+            protected void onPostExecute(ArrayList<TrailerData> trailersList) {
+                videosAdapter = new TrailerAdapter(trailersList, getActivity());
+                videosView.setAdapter(videosAdapter);
+            }
+        };
+        trailerParser.execute(model.getId());
 //
 //        ReviewParser reviewParser = new ReviewParser() {
 //            @Override

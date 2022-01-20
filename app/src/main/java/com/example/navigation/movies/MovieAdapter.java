@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.navigation.R;
+import com.example.navigation.model.Movie;
 
 import java.util.List;
 

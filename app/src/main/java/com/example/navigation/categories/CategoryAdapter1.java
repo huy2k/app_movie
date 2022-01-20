@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.navigation.R;
-import com.example.navigation.movies.MovieAdapter;
 import com.example.navigation.movies.MovieAdapter1;
-import com.example.navigation.movies.MovieData;
+import com.example.navigation.model.MovieData;
 import com.example.navigation.movies.MovieParser;
 
 import java.util.ArrayList;
@@ -74,8 +73,6 @@ public class CategoryAdapter1 extends RecyclerView.Adapter<CategoryAdapter1.cate
             rcvMovies = itemView.findViewById(R.id.rcv_movie);
             tvCategory = itemView.findViewById(R.id.tv_Category);
         }
-
-
     }
     private void jsonParsing(String x, RecyclerView rcv)
     {

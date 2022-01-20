@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.navigation.movies.Movie;
+import com.example.navigation.model.Movie;
 
 import java.util.List;
 

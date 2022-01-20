@@ -1,12 +1,13 @@
 package com.example.navigation;
 
-import android.widget.RelativeLayout;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.navigation.fragment.HomeFra;
+import com.example.navigation.fragment.NotificationFra;
+import com.example.navigation.fragment.UserFra;
 
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {

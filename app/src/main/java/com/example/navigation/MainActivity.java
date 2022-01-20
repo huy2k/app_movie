@@ -2,14 +2,9 @@ package com.example.navigation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.lifecycle.Lifecycle;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -17,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.navigation.categories.Category;
 import com.example.navigation.categories.CategoryAdapter;
-import com.example.navigation.movies.Movie;
+import com.example.navigation.model.Movie;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -39,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
 //        rcvCategory = findViewById(R.id.rcv_category);
 //        adapter = new CategoryAdapter();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this , RecyclerView.HORIZONTAL,false);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this , RecyclerView.HORIZONTAL,false);
 
         setUpViewPager();
         navigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -48,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.home:
 
-//                        rcvCategory.setLayoutManager(linearLayoutManager);
-//                        adapter.setData(getList());
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         viewPager.setCurrentItem(0);
                         break;

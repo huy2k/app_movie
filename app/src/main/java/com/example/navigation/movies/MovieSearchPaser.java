@@ -1,5 +1,4 @@
 package com.example.navigation.movies;
-
 import android.os.AsyncTask;
 
 import com.example.navigation.model.MovieData;
@@ -15,9 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-
-
-public abstract class MovieParser extends AsyncTask<String, Void, ArrayList<MovieData>> {
+public abstract class MovieSearchPaser extends AsyncTask<String, Void, ArrayList<MovieData>> {
 
     public ArrayList<MovieData> moviesList = new ArrayList<>();
 
@@ -27,8 +24,8 @@ public abstract class MovieParser extends AsyncTask<String, Void, ArrayList<Movi
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String param_type = params[0];
-        final String BASE_URL = "http://api.themoviedb.org/3/movie/" + param_type +
-                "?api_key=4840c7126f832af90ab18051d9481afb";
+        final String BASE_URL = "https://api.themoviedb.org/3/search/movie?api_key=4840c7126f832af90ab18051d9481afb&language=en-US&query="
+                + param_type+"&page=1&include_adult=false";
         try {
 
             URL url = new URL(BASE_URL);
@@ -38,7 +35,6 @@ public abstract class MovieParser extends AsyncTask<String, Void, ArrayList<Movi
             InputStreamReader stream = new InputStreamReader(urlConnection.getInputStream());
             reader = new BufferedReader(stream);
 
-
             final StringBuilder textBuilder = new StringBuilder();
             String line;
             String finalResult;
@@ -46,7 +42,6 @@ public abstract class MovieParser extends AsyncTask<String, Void, ArrayList<Movi
                 textBuilder.append(line);
             }
             finalResult = textBuilder.toString();
-
             JSONObject jsonObject = new JSONObject(finalResult);
             JSONArray jsonArray = jsonObject.getJSONArray("results");
 

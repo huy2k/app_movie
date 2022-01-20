@@ -1,6 +1,6 @@
 package com.example.navigation.categories;
 
-import com.example.navigation.movies.Movie;
+import com.example.navigation.model.Movie;
 
 import java.util.List;
 
