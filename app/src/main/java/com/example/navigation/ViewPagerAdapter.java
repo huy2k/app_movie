@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.navigation.fragment.FavoriteFragment;
 import com.example.navigation.fragment.HomeFra;
+import com.example.navigation.fragment.MainFragment;
 import com.example.navigation.fragment.NotificationFra;
 import com.example.navigation.fragment.UserFra;
 
@@ -21,21 +23,24 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                return new HomeFra();
+
             case 1:
-                return new NotificationFra();
-            case 2:
-                return new UserFra();
-            default:
                 return new HomeFra();
+            case 2:
+                return new NotificationFra();
+            case 3:
+                return new FavoriteFragment();
+            case 4:
+                return  new UserFra();
+            default:
+                return new MainFragment();
         }
 
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
 //    @NonNull

@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        app:itemBackground="@color/cardview_dark_background"
+        app:itemBackground="@color/black"
         app:menu="@menu/menu_bottom"
-        app:itemIconTint="@color/yellow"
+        app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"/>
 </RelativeLayout>

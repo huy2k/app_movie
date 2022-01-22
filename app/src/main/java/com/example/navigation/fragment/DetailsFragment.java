@@ -17,6 +17,9 @@ import com.example.navigation.Adapter.TrailerAdapter;
 import com.example.navigation.R;
 import com.example.navigation.model.MovieData;
 import com.example.navigation.model.TrailerData;
+import com.example.navigation.Adapter.ReviewAdapter;
+import com.example.navigation.model.ReviewData;
+import com.example.navigation.movies.ReviewParser;
 import com.example.navigation.movies.TrailerParser;
 import com.google.firebase.database.DatabaseReference;
 import com.squareup.picasso.Picasso;
@@ -41,11 +44,12 @@ public class DetailsFragment extends Fragment {
     public RecyclerView reviewsView;
     public RecyclerView commentsView;
     private TrailerAdapter videosAdapter;
-//    private ReviewAdapter reviewAdapter;
+    private ReviewAdapter reviewAdapter;
     private ImageButton favorite;
     private ImageButton delete;
     private ImageButton sendComment;
     private EditText writeComment;
+    private  ImageView btnBack;
     public static DetailsFragment getInstance(MovieData movie) {
         DetailsFragment detailsFragment = new DetailsFragment();
         Bundle args = new Bundle();
@@ -71,15 +75,16 @@ public class DetailsFragment extends Fragment {
         storyView = (TextView) rootView.findViewById(R.id.story);
         videosView = (RecyclerView) rootView.findViewById(R.id.vidRecycler);
         reviewsView = (RecyclerView) rootView.findViewById(R.id.revRecycler);
-        commentsView = (RecyclerView) rootView.findViewById(R.id.commentrec);
-        commentsView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        commentsView = (RecyclerView) rootView.findViewById(R.id.commentrec);
+//        commentsView.setLayoutManager(new LinearLayoutManager(getActivity()));
         videosView.setLayoutManager(new LinearLayoutManager(getActivity()));
         reviewsView.setLayoutManager(new LinearLayoutManager(getActivity()));
         favorite = (ImageButton) rootView.findViewById(R.id.favBtn);
         delete = (ImageButton) rootView.findViewById(R.id.delete);
-        sendComment = (ImageButton) rootView.findViewById(R.id.sendComment);
-        writeComment = (EditText) rootView.findViewById(R.id.writeCommentText);
+//        sendComment = (ImageButton) rootView.findViewById(R.id.sendComment);
+//        writeComment = (EditText) rootView.findViewById(R.id.writeCommentText);
         model = (MovieData) getArguments().getSerializable("movie");
+        btnBack = rootView.findViewById(R.id.back);
         //comment Adapter
 //        commentAdapter = new commentAdapter(comments);
 //        commentsView.setAdapter(commentAdapter);
@@ -148,14 +153,23 @@ public class DetailsFragment extends Fragment {
         };
         trailerParser.execute(model.getId());
 //
-//        ReviewParser reviewParser = new ReviewParser() {
-//            @Override
-//            protected void onPostExecute(ArrayList<ReviewData> reviewsList) {
-//                reviewAdapter = new ReviewAdapter(reviewsList, getActivity());
-//                reviewsView.setAdapter(reviewAdapter);
-//            }
-//        };
-//        reviewParser.execute(model.getId());
+        ReviewParser reviewParser = new ReviewParser() {
+            @Override
+            protected void onPostExecute(ArrayList<ReviewData> reviewsList) {
+                reviewAdapter = new ReviewAdapter(reviewsList, getActivity());
+                reviewsView.setAdapter(reviewAdapter);
+//                LinearLayoutManager layoutManager =  new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL,false);
+//                reviewsView.setLayoutManager(layoutManager);
+            }
+        };
+        reviewParser.execute(model.getId());
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
 //
 //        setHasOptionsMenu(true);
         return rootView;

@@ -1,4 +1,4 @@
-package com.example.navigation.movies;
+package com.example.navigation.Adapter;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.recyleHolder> {
+public class MovieAdapter1 extends RecyclerView.Adapter<MovieAdapter1.recyleviewHolder> {
 
     private List<MovieData> lMovies;
     Context context;
@@ -30,20 +30,20 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
         notifyDataSetChanged();
     }
 
-    public MovieSearchAdapter(final List<MovieData> lMovies) {
+    public MovieAdapter1(final List<MovieData> lMovies) {
         this.lMovies = lMovies;
     }
 
     @NonNull
     @Override
-    public recyleHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public recyleviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_movie, parent, false);
 
-        return new MovieSearchAdapter.recyleHolder(view);
+        return new recyleviewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull recyleHolder holder, int position) {
+    public void onBindViewHolder(@NonNull recyleviewHolder holder, int position) {
         MovieData movie = lMovies.get(position);
         if(movie == null){
             return;
@@ -60,12 +60,12 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
 
                 //handeling twoPane
 
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("movie", movie);
-                detailsFragment.setArguments(bundle);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("movie", movie);
+                    detailsFragment.setArguments(bundle);
 
-                fragmentManager.beginTransaction()
-                        .replace(R.id.activity_main, detailsFragment).addToBackStack("fragment1").commit();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.activity_main, detailsFragment).addToBackStack("fragment1").commit();
 
 
             }
@@ -74,9 +74,8 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
         holder.tvTitle.setText(movie.getTitle());
 
         Picasso.with(context).load("http://image.tmdb.org/t/p/w342/" + movie.getPoster()).placeholder(R.drawable.loading).into(holder.imgMovie);
+
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -84,28 +83,14 @@ public class MovieSearchAdapter extends RecyclerView.Adapter<MovieSearchAdapter.
         return 0;
     }
 
-    public  static  class recyleHolder extends  RecyclerView.ViewHolder{
+    public static class recyleviewHolder extends RecyclerView.ViewHolder{
         public ImageView imgMovie;
         public TextView tvTitle;
-        public recyleHolder(@NonNull View itemView) {
+        public recyleviewHolder(@NonNull View itemView) {
             super(itemView);
             imgMovie = itemView.findViewById(R.id.image_mv);
             tvTitle = itemView.findViewById(R.id.tv_title);
+
         }
     }
-//    public static class recyleviewHolders extends RecyclerView.ViewHolder{
-//        public ImageView imgMovie;
-//        public TextView tvTitle;
-//        public recyleviewHolders(@NonNull View itemView) {
-//            super(itemView);
-//            imgMovie = itemView.findViewById(R.id.image_mv);
-//            tvTitle = itemView.findViewById(R.id.tv_title);
-//
-//        }
-//
-//
-//
-//    }
-
-
 }

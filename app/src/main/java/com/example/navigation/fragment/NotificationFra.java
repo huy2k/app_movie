@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 //import com.example.navigation.Adapter.movieSearchAdapter;
 import com.example.navigation.R;
 import com.example.navigation.model.MovieData;
-import com.example.navigation.movies.MovieSearchAdapter;
+import com.example.navigation.Adapter.MovieSearchAdapter;
 import com.example.navigation.movies.MovieSearchPaser;
 
 import java.util.ArrayList;
@@ -56,7 +56,7 @@ public class NotificationFra extends Fragment {
             }
 
         });
-        lv.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        lv.setLayoutManager(new GridLayoutManager(getActivity(),3));
 //        lvList  = new ArrayList<>();
 //        lvList.add(new Movie(1 ,"Sieu nhan",R.drawable.p5, "hihi", (float) 4.6));
 //        lvList.add(new Movie(2 ,"Sieu nhan 1 ",R.drawable.p6 , "hihi", (float) 4.6));

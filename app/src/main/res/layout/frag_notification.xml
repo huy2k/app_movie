@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/bg_activity_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="100px"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
 
@@ -23,21 +26,64 @@
             android:id="@+id/txt_search"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="hi_hi"
-            android:textSize="30px"></EditText>
+            android:hint="Search"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:text=""
+            android:textSize="35px"
+            tools:ignore="TouchTargetSizeCheck"></EditText>
 
         <Button
             android:id="@+id/btn_search"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Search"></Button>
+            android:backgroundTint="@color/white"
+            android:text="@string/search"
+            android:textColor="#000000"></Button>
     </LinearLayout>
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_popular"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/ln_search"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="29dp"-->
+<!--        android:layout_marginEnd="273dp"-->
+<!--        android:layout_marginRight="50dp"-->
+<!--        android:padding="3dp"-->
+<!--        android:text="Popular"-->
+<!--        android:textSize="10dp"></Button>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/top_rate"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_below="@id/btn_popular"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="-48dp"-->
+<!--        android:layout_marginEnd="42dp"-->
+<!--        android:text="Top rate"-->
+<!--        android:textSize="10dp"></Button>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/up_comming"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/top_rate"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="-50dp"-->
+<!--        android:layout_marginEnd="145dp"-->
+<!--        android:text="Up comming"-->
+<!--        android:textSize="10dp" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ln_search"
-        android:layout_marginTop="30dp"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

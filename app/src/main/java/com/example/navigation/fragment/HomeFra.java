@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.navigation.R;
-import com.example.navigation.categories.Category;
-import com.example.navigation.categories.CategoryAdapter1;
+import com.example.navigation.model.Category;
+import com.example.navigation.Adapter.CategoryAdapter1;
 import com.example.navigation.model.Movie;
 
 import java.util.ArrayList;
@@ -24,7 +24,6 @@ public class HomeFra extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_home, container, false);
-
         RecyclerView rcvCategory = view.findViewById(R.id.rcv_category);
         CategoryAdapter1 adapter = new CategoryAdapter1(this.getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getContext(), RecyclerView.VERTICAL,false);
@@ -52,10 +51,10 @@ public class HomeFra extends Fragment {
         List<Category> categoryList = new ArrayList<>();
         List<Movie> movieList = new ArrayList<>();
 
-        categoryList.add((new Category("upcoming")));
-        categoryList.add(new Category( "popular" ));
-        categoryList.add(new Category( "top_rated" ));
-        categoryList.add(new Category("now_playing"));
+        categoryList.add((new Category("Upcoming", "upcoming")));
+        categoryList.add(new Category( "Popular", "popular" ));
+        categoryList.add(new Category( "Top Rate", "top_rated" ));
+        categoryList.add(new Category("Now Playing", "now_playing"));
         return  categoryList;
 
     }
